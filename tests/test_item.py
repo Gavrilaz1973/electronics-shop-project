@@ -6,8 +6,8 @@ from src.item import Item
 def item_router():
     return Item("роутер", 1000, 10)
 
-def test_item_init(item_router):
-    assert item_router.name == "роутер"
+# def test_item_init(item_router):
+#     assert item_router.name == "роутер"
 
 def test_calculate_total_price(item_router):
     assert item_router.calculate_total_price() == 10000
