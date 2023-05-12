@@ -26,3 +26,8 @@ def test_name_setter(item_router):
 def test_string_to_number():
     assert Item.string_to_number('5.55') == 5
 
+
+def test_magic_method():
+    item1 = Item("Смартфон", 10000, 20)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+    assert str(item1) == 'Смартфон'
