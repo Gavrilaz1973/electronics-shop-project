@@ -22,7 +22,6 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
-
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -51,10 +50,17 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         cls.all = []
-        with open('/home/gavrilaz/PycharmProjects/electronics-shop-project/src/items.csv', 'r', encoding='windows-1251') as csvfile:
+        with open('/home/gavrilaz/PycharmProjects/electronics-shop-project/src/items.csv', 'r',
+                  encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 cls(row['name'], row['price'], row['quantity'])
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return self.__name
 
     @staticmethod
     def string_to_number(num_str):
