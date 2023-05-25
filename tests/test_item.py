@@ -31,3 +31,7 @@ def test_magic_method():
     item1 = Item("Смартфон", 10000, 20)
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
     assert str(item1) == 'Смартфон'
+
+def test_instantiate_from_csv():
+    pass
+
