@@ -32,6 +32,8 @@ def test_magic_method():
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
     assert str(item1) == 'Смартфон'
 
+
 def test_instantiate_from_csv():
-    pass
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv()
 

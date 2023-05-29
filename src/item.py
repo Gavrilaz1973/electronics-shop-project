@@ -6,8 +6,6 @@ class InstantiateCSVError(Exception):
         self.message = "Файл item.csv поврежден"
 
 
-
-
 class Item:
     """
     Класс для представления товара в магазине.
@@ -58,13 +56,13 @@ class Item:
         cls.all = []
         try:
             with open('/home/gavrilaz/PycharmProjects/electronics-shop-project/src/items.csv', 'r',
-                  encoding='windows-1251') as csvfile:
+                     encoding='windows-1251') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if len(row) == 3:
                         cls(row['name'], row['price'], row['quantity'])
                     else:
-                        raise InstantiateCSVError
+                         raise InstantiateCSVError
         except FileNotFoundError:
             print('Отсутствует файл item.csv')
         except InstantiateCSVError as ex:
