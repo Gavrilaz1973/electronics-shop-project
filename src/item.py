@@ -54,19 +54,20 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         cls.all = []
-        try:
-            with open('/home/gavrilaz/PycharmProjects/electronics-shop-project/src/items.csv', 'r',
-                     encoding='windows-1251') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    if len(row) == 3:
-                        cls(row['name'], row['price'], row['quantity'])
-                    else:
-                         raise InstantiateCSVError
-        except FileNotFoundError:
-            print('Отсутствует файл item.csv')
-        except InstantiateCSVError as ex:
-            print(ex.message)
+        # try:
+        with open('/home/gavrilaz/PycharmProjects/electronics-shop-project/src/items.csv', 'r',
+                 encoding='windows-1251') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if len(row) == 3:
+                    cls(row['name'], row['price'], row['quantity'])
+                else:
+                     raise InstantiateCSVError
+        raise FileNotFoundError
+        # except FileNotFoundError:
+        #     print('Отсутствует файл item.csv')
+        # except InstantiateCSVError as ex:
+        #     print(ex.message)
 
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
